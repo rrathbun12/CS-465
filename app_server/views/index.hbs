@@ -1,2 +1,67 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<!DOCTYPE html>
+<!-- Website template by freewebsitetemplates.com -->
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Travlr Getaways Website Template</title>
+	<link rel="stylesheet" href="css/style.css" type="text/css">
+</head>
+<body>
+	<div id="background">
+		<div id="page">
+				{{> header}}
+			
+			<div id="contents">
+				<div id={{"adbox"}}>
+					<img src="images/{{homeData.adbox.image}}" alt="Img">
+					<h1>{{homeData.adbox.heading}}</h1>
+					{{{homeData.adbox.description}}}
+				</div>
+				<div id="main">
+					<div class="box">
+						<div>
+							<div>
+								<h3>Latest Blog</h3>
+								<ul>
+									<li>
+										{{#each homeData.latestBlog}}
+										<h4><a href="{{this.url}}">{{this.title}}</a></h4>
+										<span>{{this.date}}</span>
+										<p>{{this.description}}</p>
+									</li>
+									{{/each}}
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div id="testimonials" class="box">
+						<div>
+							<div>
+								<h3>Testimonials</h3>
+								<p>
+                                    “{{homeData.testimonial.quote}}”
+
+                                    <span>
+                                        -
+                                        <a href="{{homeData.testimonial.url}}">
+                                            {{homeData.testimonial.author}}
+                                        </a>
+                                    </span>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="sidebar">
+					{{#each homeData.sidebarLinks}}
+					<div class="section">
+						<a href="{{this.url}}"><img src="images/{{this.image}}" alt="Img"></a>
+					</div>
+					{{/each}}
+				</div>
+			</div>
+		{{>footer}}
+	</div>
+	
+</body>
+</html>
