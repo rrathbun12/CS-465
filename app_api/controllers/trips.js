@@ -107,9 +107,39 @@ const tripsUpdateTrip = async (req, res) => {
   }
 };
 
+// DELETE: /trips/:tripCode - delete a trip
+const tripsDeleteTrip = async (req, res) => {
+  try {
+    const deletedTrip = await Model.findOneAndDelete({
+      code: req.params.tripCode
+    }).exec();
+
+    if (!deletedTrip) {
+      return res
+        .status(404)
+        .json({ message: 'Trip not found' });
+    }
+
+    return res
+      .status(200)
+      .json(deletedTrip);
+
+  } catch (error) {
+    console.log(error);
+
+    return res
+      .status(400)
+      .json({
+        message: 'Unable to delete trip',
+        error: error.message
+      });
+  }
+};
+
 module.exports = {
   tripsList,
   tripsFindByCode,
   tripsAddTrip,
-  tripsUpdateTrip
+  tripsUpdateTrip,
+  tripsDeleteTrip
 };

@@ -1,0 +1,55 @@
+<div class="col-12 col-md-6 col-lg-4 mx-auto">
+
+  @if (!deleted) {
+
+    <div class="card">
+
+      <div class="card-body">
+
+        <h2 class="card-title">
+          Delete Trip
+        </h2>
+
+        <p>
+          Are you sure you want to delete
+          <strong>{{ tripName }}</strong>?
+        </p>
+
+        <button
+          type="button"
+          (click)="confirmDelete()"
+          class="btn btn-danger me-2">
+          Delete Trip
+        </button>
+
+        <button
+          type="button"
+          (click)="cancel()"
+          class="btn btn-secondary">
+          Cancel
+        </button>
+
+      </div>
+
+    </div>
+
+  } @else {
+
+    <div class="alert alert-success">
+
+      <h4>
+        {{ message }}
+      </h4>
+
+      <button
+        type="button"
+        (click)="returnToTrips()"
+        class="btn btn-success mt-2">
+        Return to Trips
+      </button>
+
+    </div>
+
+  }
+
+</div>

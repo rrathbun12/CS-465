@@ -26,13 +26,23 @@
       [innerHTML]="trip.description">
     </p>
 
-    <button
-      type="button"
-      (click)="editTrip(trip)"
-      class="btn btn-info mt-3">
-      Edit Trip
-    </button>
+    <div class="mt-3">
+
+      <button
+        type="button"
+        (click)="editTrip(trip)"
+        class="btn btn-info me-2">
+        Edit Trip
+      </button>
+
+      <button
+        type="button"
+        (click)="deleteTrip(trip)"
+        class="btn btn-danger">
+        Delete Trip
+      </button>
+
+    </div>
 
   </div>
-
 </div>

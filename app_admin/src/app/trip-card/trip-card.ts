@@ -22,4 +22,14 @@ export class TripCard {
 
     this.router.navigate(['/edit-trip']);
   }
+
+  public deleteTrip(trip: Trip): void {
+    localStorage.removeItem('tripCode');
+    localStorage.removeItem('tripName');
+
+    localStorage.setItem('tripCode', trip.code);
+    localStorage.setItem('tripName', trip.name);
+
+    this.router.navigate(['/delete-trip']);
+  }
 }
