@@ -26,23 +26,25 @@
       [innerHTML]="trip.description">
     </p>
 
-    <div class="mt-3">
+    @if (isLoggedIn()) {
+      <div class="mt-3">
 
-      <button
-        type="button"
-        (click)="editTrip(trip)"
-        class="btn btn-info me-2">
-        Edit Trip
-      </button>
+        <button
+          type="button"
+          (click)="editTrip(trip)"
+          class="btn btn-info me-2">
+          Edit Trip
+        </button>
 
-      <button
-        type="button"
-        (click)="deleteTrip(trip)"
-        class="btn btn-danger">
-        Delete Trip
-      </button>
+        <button
+          type="button"
+          (click)="deleteTrip(trip)"
+          class="btn btn-danger">
+          Delete Trip
+        </button>
 
-    </div>
+      </div>
+    }
 
   </div>
 </div>

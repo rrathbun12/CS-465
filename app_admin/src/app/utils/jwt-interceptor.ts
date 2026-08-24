@@ -1,0 +1,38 @@
+import { inject } from '@angular/core';
+import {
+  HttpInterceptorFn
+} from '@angular/common/http';
+
+import {
+  AuthenticationService
+} from '../services/authentication';
+
+export const jwtInterceptor: HttpInterceptorFn =
+  (request, next) => {
+
+    const authenticationService =
+      inject(AuthenticationService);
+
+    // Do not attach an existing JWT to login/register requests
+    const isAuthAPI =
+      request.url.endsWith('/login') ||
+      request.url.endsWith('/register');
+
+    if (
+      authenticationService.isLoggedIn() &&
+      !isAuthAPI
+    ) {
+      const token =
+        authenticationService.getToken();
+
+      const authRequest = request.clone({
+        setHeaders: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+
+      return next(authRequest);
+    }
+
+    return next(request);
+  };

@@ -1,11 +1,13 @@
-<div class="mb-3">
-  <button
-    type="button"
-    (click)="addTrip()"
-    class="btn btn-info">
-    Add Trip
-  </button>
-</div>
+@if (isLoggedIn()) {
+  <div class="mb-3">
+    <button
+      type="button"
+      (click)="addTrip()"
+      class="btn btn-info">
+      Add Trip
+    </button>
+  </div>
+}
 
 <div class="row g-3">
   <div *ngFor="let trip of trips" class="col-12 col-md-4">

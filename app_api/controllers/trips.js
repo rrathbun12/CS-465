@@ -80,14 +80,15 @@ const tripsUpdateTrip = async (req, res) => {
         .json({ message: 'Trip not found' });
     }
 
-    trip.code = req.body.code;
-    trip.name = req.body.name;
-    trip.length = req.body.length;
-    trip.start = req.body.start;
-    trip.resort = req.body.resort;
-    trip.perPerson = req.body.perPerson;
-    trip.image = req.body.image;
-    trip.description = req.body.description;
+    // Only update fields that were actually provided
+    trip.code = req.body.code || trip.code;
+    trip.name = req.body.name || trip.name;
+    trip.length = req.body.length || trip.length;
+    trip.start = req.body.start || trip.start;
+    trip.resort = req.body.resort || trip.resort;
+    trip.perPerson = req.body.perPerson || trip.perPerson;
+    trip.image = req.body.image || trip.image;
+    trip.description = req.body.description || trip.description;
 
     const updatedTrip = await trip.save();
 
