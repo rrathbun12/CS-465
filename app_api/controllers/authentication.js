@@ -28,7 +28,7 @@ const register = async (req, res) => {
 
     return res
       .status(200)
-      .json(token);
+      .json({ token });
 
   } catch (error) {
     return res
